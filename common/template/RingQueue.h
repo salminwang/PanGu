@@ -110,4 +110,4 @@ uint32_t CRingQueue<ObjType>::GetUsedMsgNum()
     return (m_uObjTail - m_uObjHead + m_uMaxObjNum) % m_uMaxObjNum;
 }
 
-#undef //__RING_QUEUE_H__
+#endif //__RING_QUEUE_H__
