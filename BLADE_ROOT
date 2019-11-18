@@ -1,0 +1,61 @@
+cc_config(
+    extra_incs = [],
+	cpplint = '',
+	warnings = [
+        '-Wall',
+        '-Wextra',
+        # disable some warnings enabled by Wextra
+        '-Wunused-but-set-variable',
+        '-Wno-unused-parameter',
+        '-Wno-unused-local-typedefs',
+        '-Wno-missing-field-initializers',
+        # other useful warnings
+        '-Wendif-labels',
+        '-Wno-float-equal',
+        '-Wformat=2',
+        '-Wframe-larger-than=69632', # A 64k buffer and other small vars
+        '-Wmissing-include-dirs',
+        '-Wpointer-arith',
+        '-Wwrite-strings',
+        # error flags
+        '-Werror=char-subscripts',
+        '-Werror=comments',
+        '-Werror=conversion-null',
+        '-Wempty-body',
+        '-Werror=endif-labels',
+        '-Werror=format',
+        '-Werror=missing-include-dirs',
+        '-Werror=overflow',
+        '-Werror=parentheses',
+        '-Werror=reorder',
+        '-Werror=return-type',
+        '-Werror=sequence-point',
+        '-Wsign-compare',
+        '-Wswitch',
+        '-Wtype-limits',
+        '-Wuninitialized',
+        # Masked it at first
+        '-Wunused-function',
+        '-Wunused-label',
+        '-Wunused-result',
+        '-Wunused-value',
+        '-Wunused-variable',
+    ],
+    # C++ only warning flags
+    cxx_warnings = [
+        '-Wno-invalid-offsetof',
+        '-Wno-non-virtual-dtor',
+        '-Woverloaded-virtual',
+        '-Wvla',
+
+    ],
+    # C only warning flags
+    c_warnings = ['-Werror-implicit-function-declaration'],
+    optimize = ['-O2'],
+    benchmark_libs=['//toft/base:benchmark'],
+    benchmark_main_libs=['//toft/base:benchmark_main'],
+)
+
+distcc_config(
+    enabled=True
+)
